@@ -9,7 +9,8 @@
 </head>
 <body>
 
-<form action="handel" method="post">
+<form action="update" method="post">
+@method('put')
 @csrf
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>

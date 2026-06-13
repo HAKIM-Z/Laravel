@@ -24,8 +24,12 @@ Route::get('hakim', function () {
 
 Route::view('add', 'form');
 
-Route::post('handel', function () {
-    return "inserted";
-});
+// Route::post('handel', function () {
+//     return "inserted";
+// });
 
-Route::redirect('x','home');
+Route::redirect('x', 'home');
+
+Route::put('update', function () {
+    return "updated successfully";
+});
