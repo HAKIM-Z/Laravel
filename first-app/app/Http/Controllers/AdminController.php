@@ -11,7 +11,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admins.view');
     }
 
     /**
@@ -19,7 +19,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admins.add');
     }
 
     /**
@@ -27,15 +27,16 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        $request->validate([
+            "name" => "required|string|min:3",
+            "email" => "required|string|email|unique:users,email",
+            "password" => "required|min:6",
+            "age" => "required|integer|between:18,60",
+            "phone" => "required|numeric|starts_with:+20"
+        ]);
+
+        return $request;
     }
 
     /**
@@ -43,7 +44,7 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admins.edit');
     }
 
     /**
@@ -51,7 +52,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return $request;
     }
 
     /**
@@ -59,6 +60,6 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        return "$id deleted";
     }
 }
