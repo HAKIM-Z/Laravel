@@ -1,4 +1,4 @@
-<a href="{{route('user.add')}}">add user</a>
+<a href="{{route('admin.create')}}">add user</a>
 
 <table>
 
@@ -27,12 +27,13 @@
                 <td>hakim@gmial.com</td>
                 <td>01288238329</td>
                 <td>21</td>
-                <td><a href="{{route('user.edit',8)}}">edit</a></td>
-                <td><form action="{{route('user.delete',8)}}" method="post">
+                <td><a href="{{route('admin.edit',8)}}">edit</a></td>
+                <td><form action="{{route('admin.destroy',8)}}" method="post">
                     @method('delete')
                     @csrf
                     <button>delete</button>
-                </form></a></td>
+                    </form>
+                </td>
 
         </tr>
 
@@ -43,12 +44,13 @@
                 <td>ahmed@gmail.com</td>
                 <td>01145450837</td>
                 <td>2</td>
-                <td><a href="{{route('user.edit',9)}}">edit</a></td>
-                <td><form action="{{route('user.delete',9)}}" method="post">
+                <td><a href="{{route('admin.edit',9)}}">edit</a></td>
+                <td><form action="{{route('admin.destroy',9)}}" method="post">
                     @method('delete')
                     @csrf
                     <button>delete</button>
-                </form></a></td>
+                    </form>
+                </td>
 
         </tr>
 

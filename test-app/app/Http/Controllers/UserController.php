@@ -22,4 +22,19 @@ class UserController extends Controller
     {
         return $request;
     }
+
+    public function show_edit($id)
+    {
+        return view('User.edit');
+    }
+
+    public function update(Request $request, $id)
+    {
+        return $request;
+    }
+
+    public function delete($id)
+    {
+        return "$id deleted";
+    }
 }
