@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Psy\Command\WhereamiCommand;
 
 class AdminController extends Controller
 {
@@ -13,7 +14,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('Admin.view');
+        // return view('Admin.view');
+
+        $admins = DB::table('admins')->get();
+
+        return view('Admin.view', compact('admins'));
+        // ->where('id', 2)
+        // ->orWhere('name', 'ali mohamed ali')
+        // ->get(['name', 'gender']);
     }
 
     /**
@@ -54,7 +62,9 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        return view('Admin.edit');
+        $admin = DB::table('admins')->find($id);
+
+        return view('Admin.edit', compact('admin'));
     }
 
     /**
@@ -62,7 +72,23 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return $request;
+
+        $request->validate([
+            "name" => "required|min:3|string",
+            "email" => "required|string|email|unique:users,email",
+            "phone" => "required|starts_with:+20|numeric",
+            "age" => "required|numeric|between:18,60"
+        ]);
+
+        DB::table('admins')->where('id', $id)->update([
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "age" => $request->age,
+            "gender" => $request->gender
+        ]);
+
+        return to_route('admin.index');
     }
 
     /**
@@ -70,6 +96,7 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        return "$id deleted";
+        DB::table('admins')->where('id', $id)->delete();
+        return to_route('admin.index');
     }
 }

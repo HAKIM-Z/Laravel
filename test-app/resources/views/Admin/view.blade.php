@@ -11,6 +11,7 @@
                 <td>email</td>
                 <td>phone</td>
                 <td>age</td>
+                <td>gender</td>
                 <td>edit</td>
                 <td>delete</td>
 
@@ -20,15 +21,18 @@
 
     <tbody>
 
+            @foreach ($admins as $key => $value)
+
         <tr>
 
-                <td>1</td>
-                <td>hakim</td>
-                <td>hakim@gmial.com</td>
-                <td>01288238329</td>
-                <td>21</td>
-                <td><a href="{{route('admin.edit',8)}}">edit</a></td>
-                <td><form action="{{route('admin.destroy',8)}}" method="post">
+                <td>{{++$key}}</td>
+                <td>{{$value->name}}</td>
+                <td>{{$value->email}}</td>
+                <td>{{$value->phone}}</td>
+                <td>{{$value->age}}</td>
+                <td>{{$value->gender}}</td>
+                <td><a href="{{route('admin.edit',$value->id)}}">edit</a></td>
+                <td><form action="{{route('admin.destroy',$value->id)}}" method="post">
                     @method('delete')
                     @csrf
                     <button>delete</button>
@@ -37,22 +41,7 @@
 
         </tr>
 
-        <tr>
-
-                <td>2</td>
-                <td>ahmed</td>
-                <td>ahmed@gmail.com</td>
-                <td>01145450837</td>
-                <td>2</td>
-                <td><a href="{{route('admin.edit',9)}}">edit</a></td>
-                <td><form action="{{route('admin.destroy',9)}}" method="post">
-                    @method('delete')
-                    @csrf
-                    <button>delete</button>
-                    </form>
-                </td>
-
-        </tr>
+            @endforeach
 
     </tbody>
 
