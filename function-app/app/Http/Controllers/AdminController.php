@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminRequest;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -25,9 +27,11 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
-        //
+        Admin::create($request->except('_token'));
+
+        return to_route('admin.index');
     }
 
     /**
