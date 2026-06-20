@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -13,7 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pages.admins.view');
+        $admins = Admin::all();
+        return view('dashboard.pages.admins.view', compact('admins'));
     }
 
     /**
@@ -47,7 +49,9 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $admin = Admin::findOrFail($id);
+
+        return view('dashboard.pages.admins.edit', compact('admin'));
     }
 
     /**
@@ -55,7 +59,9 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Admin::where('id', $id)->update($request->except('_token', "_method"));
+
+        return to_route('admin.index');
     }
 
     /**
