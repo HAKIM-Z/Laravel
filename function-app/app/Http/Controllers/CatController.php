@@ -12,7 +12,10 @@ class CatController extends Controller
      */
     public function index()
     {
-        //
+
+        $cats = Cat::all();
+
+        return view('dashboard.pages.cats.view', compact('cats'));
     }
 
     /**
@@ -28,7 +31,13 @@ class CatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required|min:3|string|unique:cats,name"
+        ]);
+
+        Cat::create($request->except('_token'));
+
+        return to_route('cat.index');
     }
 
     /**
@@ -60,6 +69,8 @@ class CatController extends Controller
      */
     public function destroy(Cat $cat)
     {
-        //
+        Cat::where('id', $cat->id)->delete();
+
+        return to_route('cat.index');
     }
 }
