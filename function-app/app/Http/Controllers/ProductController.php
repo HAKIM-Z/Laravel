@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
+use App\Models\Cat;
+use App\Models\Product;
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -11,7 +15,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pages.products.view');
+        $products = Product::with('cat', 'image')->get();
+
+        return view('dashboard.pages.products.view', compact('products'));
     }
 
     /**
@@ -19,15 +25,27 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $cats = Cat::all();
+
+        return view('dashboard.pages.products.add', compact('cats'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $product = $request->except('_token', 'img');
+
+        $img = $request->only('img');
+
+        $data = Product::create($product);
+
+        $product_id = $data->id;
+
+        Image::saveImg($img, $product_id);
+
+        return to_route('product.index');
     }
 
     /**
