@@ -40,7 +40,7 @@
                           <td>
                                 @foreach ($value['image'] as $k => $v)
 
-                                    <img src="{{asset('storage/images/products/' . $v->img_name)}}" alt="" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
+                                    <img src="{{asset("storage/images/products/" . $v->img_name)}}" alt="" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
 
                                 @endforeach
                           </td>

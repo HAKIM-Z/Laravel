@@ -73,7 +73,36 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if ($request->hasFile('img')) {
+
+            $product = $request->except('_token', '_method', 'img');
+
+            $new_img = $request->only('img');
+
+            Product::where('id', $id)->update($product);
+
+            //img:
+
+            $old_img = Image::where('product_id', $id)->pluck('img_name');
+
+            foreach ($old_img as $img) {
+
+                unlink(storage_path("app/public/images/products/$img"));
+            }
+
+            Image::where('product_id', $id)->delete();
+
+            Image::saveImg($new_img, $id);
+
+            //
+        } else {
+
+            $product = $request->except('_token', '_method');
+
+            Product::where('id', $id)->update($product);
+        }
+
+        return to_route('product.index');
     }
 
     /**

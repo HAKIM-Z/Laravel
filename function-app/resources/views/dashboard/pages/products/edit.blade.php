@@ -6,8 +6,9 @@
 <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <form class="forms-sample" action="" method="post" enctype="multipart/form-data">
+                    <form class="forms-sample" action="{{route('product.update',$product->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
 
                       <div class="form-group">
 
