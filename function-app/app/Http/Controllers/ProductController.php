@@ -61,7 +61,11 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        $cats = Cat::all();
+
+        return view('dashboard.pages.products.edit', compact('cats', 'product'));
     }
 
     /**
@@ -77,6 +81,18 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $old_img = Image::where('product_id', $id)->pluck('img_name');
+
+        foreach ($old_img as $img) {
+
+            unlink(storage_path("app/public/images/products/$img"));
+        }
+
+        Product::where('id', $id)->delete();
+
+        Image::where('product_id', $id)->delete();
+
+        return to_route('product.index');
     }
 }
