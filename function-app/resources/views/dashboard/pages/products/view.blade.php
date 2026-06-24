@@ -49,9 +49,9 @@
                           <td>
 
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                                {{-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                     delete
-                                </button>
+                                </button> --}}
 
                                 {{-- <!-- Modal -->
                                 <div class="modal fade" id="exampleModal{{$value['id']}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,6 +76,14 @@
                                         </div>
                                     </div>
                                 </div> --}}
+
+                                <form action="{{route('product.destroy',$value['id'])}}" method="post">
+
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger">delete</button>
+
+                                </form>
 
                             </td>
 
