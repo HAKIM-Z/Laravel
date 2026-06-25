@@ -8,24 +8,25 @@
 <div class="product-images">
 <main id="gallery">
 <div class="main-img">
-<img src="{{asset('web')}}/assets/images/product-details/01.jpg" id="current" alt="#">
+<img src="{{asset("storage/images/products/".$product['image'][0]['img_name'])}}" id="current" alt="#">
 </div>
 <div class="images">
-<img src="{{asset('web')}}/assets/images/product-details/01.jpg" class="img" alt="#">
-<img src="{{asset('web')}}/assets/images/product-details/02.jpg" class="img" alt="#">
-<img src="{{asset('web')}}/assets/images/product-details/03.jpg" class="img" alt="#">
-<img src="{{asset('web')}}/assets/images/product-details/04.jpg" class="img" alt="#">
-<img src="{{asset('web')}}/assets/images/product-details/05.jpg" class="img" alt="#">
+
+@foreach ($product['image'] as $img)
+
+<img src="{{asset("storage/images/products/".$img['img_name'])}}" class="img" alt="#">
+
+@endforeach
+
 </div>
 </main>
 </div>
 </div>
 <div class="col-lg-6 col-md-12 col-12">
 <div class="product-info">
-<h2 class="title">GoPro Karma Camera Drone</h2>
-<p class="category"><i class="lni lni-tag"></i> Drones:<a href="javascript:void(0)">Action
-cameras</a></p>
-<h3 class="price">$850<span>$945</span></h3>
+<h2 class="title">{{$product->name}}</h2>
+<p class="category"><i class="lni lni-tag"></i> {{$product['cat']['name']}}<a href="javascript:void(0)"></a></p>
+<h3 class="price">{{$product->price-($product->price*(($product->sale)/100))}}<span>{{$product->price}}</span></h3>
 <p class="info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor incididunt
 ut labore et dolore magna aliqua.</p>
