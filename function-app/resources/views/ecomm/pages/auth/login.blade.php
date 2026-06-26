@@ -5,7 +5,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-12">
-            <form class="card login-form" method="post">
+            <form class="card login-form" action="{{route('user.login')}}" method="post">
+                @csrf
               <div class="card-body">
                 <div class="title">
                   <h3>Login Now</h3>
@@ -42,18 +43,20 @@
                   <label for="reg-fn">Email</label>
                   <input
                     class="form-control"
-                    type="email"
+                    type="text"
                     id="reg-email"
                     required
+                    name="email"
                   />
                 </div>
                 <div class="form-group input-group">
                   <label for="reg-fn">Password</label>
                   <input
                     class="form-control"
-                    type="password"
+                    type="text"
                     id="reg-pass"
                     required
+                    name="password"
                   />
                 </div>
                 <div

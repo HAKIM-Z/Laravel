@@ -18,4 +18,9 @@ class WebController extends Controller
         $product = product::with('cat', 'image')->find($id);
         return view('ecomm.pages.details', compact('product'));
     }
+
+    public function contact_show()
+    {
+        return view('ecomm.pages.auth.contact');
+    }
 }

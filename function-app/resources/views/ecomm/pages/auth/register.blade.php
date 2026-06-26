@@ -15,43 +15,52 @@
                     </div>
 
 
-                    <form class="row" method="post">
-
+                    <form class="row" action="{{route('user.register')}}" method="post">
+                        @csrf
 
                         <div class="col-sm-6">
+                            @error('name')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
                             <div class="form-group">
                                 <label for="reg-fn"> Name</label>
                                 <input
                                     class="form-control"
                                     type="text"
                                     id="reg-fn"
-                                    required
+                                    name="name"
                                 />
                             </div>
                         </div>
 
 
                         <div class="col-sm-6">
+                             @error('email')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
                             <div class="form-group">
                                 <label for="reg-email">E-mail</label>
                                 <input
                                     class="form-control"
-                                    type="email"
+                                    type="text"
                                     id="reg-email"
-                                    required
+                                    name="email"
                                 />
                             </div>
                         </div>
 
 
                         <div class="col-sm-6">
+                             @error('password')
+                                <div class="alert alert-danger">{{$message}}</div>
+                            @enderror
                             <div class="form-group">
                                 <label for="reg-pass">Password</label>
                                 <input
                                     class="form-control"
-                                    type="password"
+                                    type="text"
                                     id="reg-pass"
-                                    required
+                                    name="password"
                                 />
                             </div>
                         </div>
@@ -64,9 +73,9 @@
                                 >
                                 <input
                                     class="form-control"
-                                    type="password"
+                                    type="text"
                                     id="reg-pass-confirm"
-                                    required
+                                    name="confirm"
                                 />
                             </div>
                         </div>
