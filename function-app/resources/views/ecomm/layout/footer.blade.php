@@ -151,6 +151,8 @@ Subscribe to our Newsletter
 <script src="{{asset('web')}}/assets/js/tiny-slider.js"></script>
 <script src="{{asset('web')}}/assets/js/glightbox.min.js"></script>
 <script src="{{asset('web')}}/assets/js/main.js"></script>
+<script src="{{asset('web')}}/assets/js/jquery-4.0.0.js"></script>
+<script src="{{asset('web')}}/assets/js/contact.js"></script>
 <script type="text/javascript">
         //========= Hero Slider
         tns({

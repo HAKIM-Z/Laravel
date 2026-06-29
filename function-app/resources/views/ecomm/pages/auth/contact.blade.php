@@ -76,10 +76,12 @@
                 <div class="contact-form-head">
                   <div class="form-main">
                     <form
-                      class="form"
+                      class="form add_ms"
                       method="post"
-                      action="https://demo.graygrids.com/themes/shopgrids/assets/mail/mail.php"
                     >
+
+                    <input type="hidden" class="_token" value="{{csrf_token()}}">
+
                       <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
                           <div class="form-group">
@@ -87,48 +89,47 @@
                               name="name"
                               type="text"
                               placeholder="Your Name"
-                              required="required"
+                              class="_name"
                             />
                           </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                          <div class="form-group">
-                            <input
-                              name="subject"
-                              type="text"
-                              placeholder="Your Subject"
-                              required="required"
-                            />
-                          </div>
-                        </div>
+
+
                         <div class="col-lg-6 col-md-6 col-12">
                           <div class="form-group">
                             <input
                               name="email"
-                              type="email"
+                              type="text"
                               placeholder="Your Email"
-                              required="required"
+                              class="_email"
                             />
                           </div>
                         </div>
+
+
                         <div class="col-lg-6 col-md-6 col-12">
                           <div class="form-group">
                             <input
                               name="phone"
                               type="text"
                               placeholder="Your Phone"
-                              required="required"
+                              class="_phone"
                             />
                           </div>
                         </div>
+
+
                         <div class="col-12">
                           <div class="form-group message">
                             <textarea
                               name="message"
                               placeholder="Your Message"
+                              class="_message"
                             ></textarea>
                           </div>
                         </div>
+
+
                         <div class="col-12">
                           <div class="form-group button">
                             <button type="submit" class="btn">
@@ -137,6 +138,8 @@
                           </div>
                         </div>
                       </div>
+
+
                     </form>
                   </div>
                 </div>

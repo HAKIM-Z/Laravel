@@ -15,6 +15,8 @@ Route::get('details/{id}', [WebController::class, 'product_details'])->name('pro
 
 Route::get('contact', [WebController::class, 'contact_show'])->name('contact.view');
 
+Route::post('message_store', [WebController::class, 'message_store']);
+
 Route::get('register', [AuthUserController::class, 'register_form'])->name('user.register.form');
 
 Route::post('store', [AuthUserController::class, 'register_data'])->name('user.register');

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Message;
 use Illuminate\Http\Request;
+use PhpParser\Builder\Function_;
+use PhpParser\Node\Expr\FuncCall;
 
 class WebController extends Controller
 {
@@ -22,5 +25,10 @@ class WebController extends Controller
     public function contact_show()
     {
         return view('ecomm.pages.auth.contact');
+    }
+
+    public function message_store(Request $request)
+    {
+        Message::create($request->except('_token'));
     }
 }

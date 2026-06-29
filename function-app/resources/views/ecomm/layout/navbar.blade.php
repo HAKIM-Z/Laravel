@@ -605,7 +605,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a
-                                                href="contact.html"
+                                                href="{{route('contact.view')}}"
                                                 aria-label="Toggle navigation"
                                                 >Contact Us</a
                                             >
