@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthUserController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,5 @@ Route::get('login', [AuthUserController::class, 'login_form'])->name('user.login
 Route::post('check', [AuthUserController::class, 'login_check'])->name('user.login');
 
 Route::get('logout', [AuthUserController::class, 'logout'])->name('user.logout');
+
+Route::get('messages', [MessageController::class, 'show_messages'])->name('messages.show');
