@@ -34,7 +34,16 @@ $(".add_ms").submit(function (e) {
                 message: message,
             },
             success: function (x) {
-                console.log(x);
+                $(".call_mass").html(x);
+
+                $("._name").val("");
+                $("._email").val("");
+                $("._phone").val("");
+                $("._message").val("");
+
+                setTimeout(() => {
+                    $(".call_mass").html("");
+                }, 3000);
             },
             error: function (y) {
                 console.log(y);

@@ -30,5 +30,6 @@ class WebController extends Controller
     public function message_store(Request $request)
     {
         Message::create($request->except('_token'));
+        return "<div class='alert alert-success'>your message have been sent</div>";
     }
 }

@@ -80,6 +80,8 @@
                       method="post"
                     >
 
+                    <div class="call_mass"></div>
+
                     <input type="hidden" class="_token" value="{{csrf_token()}}">
 
                       <div class="row">
