@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\AdminAuth;
 use App\Models\Product;
@@ -19,6 +20,8 @@ Route::middleware(AdminAuth::class)->group(function () {
     Route::resource('cat', CatController::class);
 
     Route::resource('product', ProductController::class);
+
+    Route::get('messages', [MessageController::class, 'show_messages'])->name('messages.show');
 });
 
 

@@ -152,7 +152,14 @@ Subscribe to our Newsletter
 <script src="{{asset('web')}}/assets/js/glightbox.min.js"></script>
 <script src="{{asset('web')}}/assets/js/main.js"></script>
 <script src="{{asset('web')}}/assets/js/jquery-4.0.0.js"></script>
+<script>
+    let _token="{{csrf_token()}}";
+</script>
 <script src="{{asset('web')}}/assets/js/contact.js"></script>
+<script src="{{asset('web')}}/assets/js/cart.js"></script>
+
+
+
 <script type="text/javascript">
         //========= Hero Slider
         tns({

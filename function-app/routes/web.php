@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthUserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,4 @@ Route::post('check', [AuthUserController::class, 'login_check'])->name('user.log
 
 Route::get('logout', [AuthUserController::class, 'logout'])->name('user.logout');
 
-Route::get('messages', [MessageController::class, 'show_messages'])->name('messages.show');
+Route::post('cart', [CartController::class, 'store_cart']);

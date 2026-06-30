@@ -55,6 +55,12 @@
   <!-- Demo scripts for this page-->
   <script src="{{asset('dash')}}/js/demo/datatables-demo.js"></script>
   <script src="{{asset('dash')}}/js/demo/chart-area-demo.js"></script>
+  <script>
+    $('.view_ms').click(function(){
+        let id=$(this).attr('id_attr');
+        $(this).closest('tr').find('.view').html('seen');
+    })
+  </script>
 
 </body>
 

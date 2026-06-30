@@ -13,26 +13,38 @@
                         <tr>
                           <th> # </th>
                           <th> name </th>
-                          <th> price </th>
-                          <th> sale </th>
-                          <th> count </th>
+                          <th> email </th>
+                          <th> phone </th>
+                          <th> message </th>
+                          <th> view </th>
+                          <th> delete </th>
                         </tr>
 
 
                       </thead>
                       <tbody>
 
+                        @foreach ($messages as $key => $value)
 
                         <tr class="table-info">
-                          <td>  </td>
-                          <td>  </td>
-                          <td>  </td>
-                          <td>  </td>
-                          <td>  </td>
+                          <td> {{++$key}} </td>
+                          <td> {{$value->name}} </td>
+                          <td> {{$value->email}} </td>
+                          <td> {{$value->phone}} </td>
+                          <td> @include('dashboard.layout.mess_modal') </td>
+                          <td class="view"> {{($value->view=="0")?"unseen":"seen"}} </td>
+                          <td>
+
+
+
+                            <form action="">
+                                <button class="btn btn-danger">delete</button>
+                            </form>
+
+                            </td>
                         </tr>
 
-
-
+                        @endforeach
 
                       </tbody>
                     </table>

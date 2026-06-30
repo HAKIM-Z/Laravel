@@ -19,11 +19,26 @@
         <div class="single-product">
           <div class="product-image">
             <img src="{{asset('storage/images/products')}}/{{$value['image'][0]['img_name']}}" alt="#" />
-            <div class="button">
-              <a href="product-details.html" class="btn"
-                ><i class="lni lni-cart"></i> Add to Cart</a
-              >
-            </div>
+
+@if (Auth::guard("web")->check())
+
+        <div class="button">
+
+            <button id_pro="{{$value['id']}}" class="btn add_cart"><i class="lni lni-cart"></i> Add to Cart</button>
+
+        </div>
+
+@else
+
+        <div class="button">
+
+            <a href="{{route('login.form')}}" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+
+        </div>
+
+@endif
+
+
           </div>
           <div class="product-info">
             <span class="category">{{$value['cat']['name']}}</span>
